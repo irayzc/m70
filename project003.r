@@ -30,8 +30,12 @@ all=all[seq(from=min.ni,to=1,by=-1),]
 LRT=log(all[2:min.ni,]/all[1:(min.ni-1),])
 n=nrow(LRT);m=ncol(LRT)
 Y <- LRT[(n-vd-hd+1):n,stock]
-par(mfrow=c(2,2),mar=c(3,3,2,1),omi=c(0,0,.25,0))
+par(mfrow=c(3,round(ad/3)),mar=c(3,3,2,1),omi=c(0,0,.25,0))
 
+for (ad in 1:ad)
+{
+
+}
 # ARIMA(1,0,1) forecasting
 mydata.arima101 <- arima(Y, order = c(1,0,1))
 mydata.pred1 <- predict(mydata.arima101, n.ahead=pd)
