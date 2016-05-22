@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 project002 <- function(stock=1, hd=100, vd=365, ad=10, amv=10 pd=1000)   #hd: history depth in term of days # vd verification depth #amv: moving average #ad: order of difference
+=======
+project001 <- function(stock=1, hd=100, vd=365, ad=10, amv=10, pd=1000)   #hd: history depth in term of days # vd verification depth #amv: moving average #ad: order of difference
+>>>>>>> origin/master
 {
 # load package with ARIMA function
 if (!require("tseries")) install.packages("tseries")
@@ -12,11 +16,13 @@ all=as.data.frame(matrix(NA,ncol=ns,nrow=10000))
 names(all)=symb
 min.ni=10000
 
+#directory = "E:\\360cloud\\MATH\\MATH 70\\R\\hw7\\" # Ira's computer
+#directory = "C:/Users/Adan/Dropbox/School/Senior Year/16S/MATH 70/stocks/" # Adan's computer
+directory = "C:\\Users\\SHANE\\Documents\\stocks\\" #Shane's Computer
+
 # import all stock data
 for(i in 1:ns)
 { 
-  #directory = "E:\\360cloud\\MATH\\MATH 70\\R\\hw7\\" # Ira's computer
-  directory = "C:/Users/Adan/Dropbox/School/Senior Year/16S/MATH 70/stocks/" # Adan's computer
 	tabi= tbl_df(read.csv(paste(directory,symb[i],".csv",sep=""),stringsAsFactors=F))
 	ni=nrow(tabi)
 	if(min.ni>ni) min.ni=ni
@@ -58,6 +64,7 @@ lines((n+1):(n+pd),mydata.pred1$pred-2*mydata.pred1$se, col="red")
 
 # ARIMA(1,1,1) forecasting
 mydata.arima111 <- arima(Y, order = c(1,1,1))
+<<<<<<< HEAD
 mydata.pred1 <- predict(mydata.arima111, n.ahead=pd)
 plot ((n-vd-hd+1):n,Y, xlab="days", ylab="log returns",xlim=c((n-vd-hd+1),(n+pd)),ylim=c(min(Y,mydata.pred1$pred),max(Y,mydata.pred1$pred)))
 lines((n+1):(n+pd),mydata.pred1$pred, col="blue")
@@ -65,3 +72,16 @@ lines((n+1):(n+pd),mydata.pred1$pred+2*mydata.pred1$se, col="red")
 lines((n+1):(n+pd),mydata.pred1$pred-2*mydata.pred1$se, col="red")
 }
 }
+=======
+mydata.pred1 <- predict(mydata.arima111, n.ahead=100)
+plot (Y)
+lines(mydata.pred1$pred, col="blue")
+lines(mydata.pred1$pred+2*mydata.pred1$se, col="red")
+lines(mydata.pred1$pred-2*mydata.pred1$se, col="red")
+
+return (0)
+
+}
+
+project001()
+>>>>>>> origin/master
