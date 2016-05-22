@@ -1,4 +1,4 @@
-project001 <- function(stock=1, hd=100, vd=365, ad=10, amv=10 pd=1000)   #hd: history depth in term of days # vd verification depth #amv: moving average #ad: order of difference
+project001 <- function(stock=1, hd=100, vd=365, ad=10, amv=10, pd=1000)   #hd: history depth in term of days # vd verification depth #amv: moving average #ad: order of difference
 {
 # load package with ARIMA function
 if (!require("tseries")) install.packages("tseries")
@@ -16,7 +16,8 @@ min.ni=10000
 for(i in 1:ns)
 { 
   #directory = "E:\\360cloud\\MATH\\MATH 70\\R\\hw7\\" # Ira's computer
-  directory = "C:/Users/Adan/Dropbox/School/Senior Year/16S/MATH 70/stocks/" # Adan's computer
+  #directory = "C:/Users/Adan/Dropbox/School/Senior Year/16S/MATH 70/stocks/" # Adan's computer
+  directory = "C:\\Users\\SHANE\\Documents\\stocks\\" #Shane's Computer
 	tabi= tbl_df(read.csv(paste(directory,symb[i],".csv",sep=""),stringsAsFactors=F))
 	ni=nrow(tabi)
 	if(min.ni>ni) min.ni=ni
