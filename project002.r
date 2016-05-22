@@ -12,12 +12,13 @@ all=as.data.frame(matrix(NA,ncol=ns,nrow=10000))
 names(all)=symb
 min.ni=10000
 
+#directory = "E:\\360cloud\\MATH\\MATH 70\\R\\hw7\\" # Ira's computer
+#directory = "C:/Users/Adan/Dropbox/School/Senior Year/16S/MATH 70/stocks/" # Adan's computer
+directory = "C:\\Users\\SHANE\\Documents\\stocks\\" #Shane's Computer
+
 # import all stock data
 for(i in 1:ns)
 { 
-  #directory = "E:\\360cloud\\MATH\\MATH 70\\R\\hw7\\" # Ira's computer
-  #directory = "C:/Users/Adan/Dropbox/School/Senior Year/16S/MATH 70/stocks/" # Adan's computer
-  directory = "C:\\Users\\SHANE\\Documents\\stocks\\" #Shane's Computer
 	tabi= tbl_df(read.csv(paste(directory,symb[i],".csv",sep=""),stringsAsFactors=F))
 	ni=nrow(tabi)
 	if(min.ni>ni) min.ni=ni
@@ -67,3 +68,5 @@ lines(mydata.pred1$pred-2*mydata.pred1$se, col="red")
 return (0)
 
 }
+
+project001()
