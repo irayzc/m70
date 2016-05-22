@@ -1,4 +1,4 @@
-project001 <- function(stock=1, hd=100, vd=365, ad=10, amv=10)   #HD: history depth in term of days # vd verification depth # 
+project001 <- function(stock=1, hd=100, vd=365, ad=10, amv=10 pd=1000)   #hd: history depth in term of days # vd verification depth #amv: moving average #ad: order of difference
 {
 # load package with ARIMA function
 if (!require("tseries")) install.packages("tseries")
