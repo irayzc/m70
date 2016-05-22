@@ -1,4 +1,4 @@
-project001 <- function(stock=1, hd=100, vd=365, ad=10, amv=10 pd=1000)   #hd: history depth in term of days # vd verification depth #amv: moving average #ad: order of difference
+project002 <- function(stock=1, hd=100, vd=365, ad=10, amv=10 pd=1000)   #hd: history depth in term of days # vd verification depth #amv: moving average #ad: order of difference
 {
 # load package with ARIMA function
 if (!require("tseries")) install.packages("tseries")
@@ -47,22 +47,21 @@ arima(Y, order = c(0,0,1))
 # ARIMA(1,0,1) or AR(1) MA(1)
 arima(Y, order = c(1,0,1))
 # ARIMA(1,0,1) forecasting
-
 mydata.arima101 <- arima(Y, order = c(1,0,1))
-mydata.pred1 <- predict(mydata.arima101, n.ahead=100)
-plot (Y)
-lines(mydata.pred1$pred, col="blue")
-lines(mydata.pred1$pred+2*mydata.pred1$se, col="red")
-lines(mydata.pred1$pred-2*mydata.pred1$se, col="red")
+mydata.pred1 <- predict(mydata.arima101, n.ahead=pd)
+plot ((n-vd-hd+1):n,Y, xlab="days", ylab="log returns",xlim=c((n-vd-hd+1),(n+pd)),ylim=c(min(Y,mydata.pred1$pred),max(Y,mydata.pred1$pred)))
+print(length(mydata.pred1$pred))
+print (length((n+1):(n+pd)))
+lines((n+1):(n+pd),mydata.pred1$pred, col="blue")
+lines((n+1):(n+pd),mydata.pred1$pred+2*mydata.pred1$se, col="red")
+lines((n+1):(n+pd),mydata.pred1$pred-2*mydata.pred1$se, col="red")
 
 # ARIMA(1,1,1) forecasting
 mydata.arima111 <- arima(Y, order = c(1,1,1))
-mydata.pred1 <- predict(mydata.arima111, n.ahead=100)
-plot (Y)
-lines(mydata.pred1$pred, col="blue")
-lines(mydata.pred1$pred+2*mydata.pred1$se, col="red")
-lines(mydata.pred1$pred-2*mydata.pred1$se, col="red")
-
-return (0)
-
+mydata.pred1 <- predict(mydata.arima111, n.ahead=pd)
+plot ((n-vd-hd+1):n,Y, xlab="days", ylab="log returns",xlim=c((n-vd-hd+1),(n+pd)),ylim=c(min(Y,mydata.pred1$pred),max(Y,mydata.pred1$pred)))
+lines((n+1):(n+pd),mydata.pred1$pred, col="blue")
+lines((n+1):(n+pd),mydata.pred1$pred+2*mydata.pred1$se, col="red")
+lines((n+1):(n+pd),mydata.pred1$pred-2*mydata.pred1$se, col="red")
+}
 }
